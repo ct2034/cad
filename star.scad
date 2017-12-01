@@ -25,11 +25,16 @@ for(i=[0:n-1]) {
 }
 }
 
-m = 10;
-union(){
-for(i=[0:m-1]) {
-    rotate([0,0,i*180/m])
-    scale([i/m+.3,i/m+.3,i/m+.3])
-        star();
-}
+difference() {
+    union(){
+        m = 10;
+        for(i=[0:m-1]) {
+            rotate([0,0,i*180/m])
+            scale([i/m+.3,i/m+.3,i/m+.3])
+                star();
+        }
+    }
+    translate([0,5,38])
+    rotate([90,0,0])
+    #cylinder(10,3,3);
 }
