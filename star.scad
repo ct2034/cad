@@ -28,9 +28,9 @@ for(i=[0:n-1]) {
 difference() {
     union(){
         m = 10;
-        for(i=[0:m-1]) {
+        for(i=[0:m]) {
             rotate([0,0,i*180/m])
-            scale([i/m+.3,i/m+.3,i/m+.3])
+            scale([i/m+.25,i/m+.25,i/m+.25])
                 star();
         }
     }
