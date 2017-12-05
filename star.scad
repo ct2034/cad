@@ -1,11 +1,11 @@
 module baseline(n) {
     difference() {
         rotate([90,0,0])
-        linear_extrude(height = 3, center=true)
-        polygon(points=[[0,30],[0,40],[20,0],[20,-10]]);
+            linear_extrude(height = 3, center=true)
+                polygon(points=[[0,30],[0,40],[20,0],[20,-10]]);
         translate([0,-2.5,0])
-        rotate([0,360/n/2,0])        
-        cube([30,5,20]);
+            rotate([0,360/n/2,0])        
+                cube([30,5,20]);
     }
 }
 
@@ -28,13 +28,13 @@ for(i=[0:n-1]) {
 difference() {
     union(){
         m = 10;
-        for(i=[0:m-1]) {
+        for(i=[0:m]) {
             rotate([0,0,i*180/m])
             scale([i/m+.3,i/m+.3,i/m+.3])
                 star();
         }
     }
-    translate([0,5,38])
+    translate([0,5,41])
     rotate([90,0,0])
     #cylinder(10,3,3);
 }
