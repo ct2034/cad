@@ -26,19 +26,30 @@ module star() {
 }
 
 module rotstar(i,m) {
-    rotate([0,0,i*180/m])
-        scale([i/m+.25,i/m+.25,i/m+.25])
-            star();
+    if(i<=m) {
+        difference() {
+            rotate([0,0,i*180/m])
+                scale([i/m+.25,i/m+.25,i/m+.25])
+                    star();
+            translate([0,5,41])
+                rotate([90,0,0])
+                    cylinder(10,3,3);
+        }   
+    }
 }
 
-difference() {
-    union(){
-        m = 8;
-        for(i=[0:m]) {
-            rotstar(i,m);
-        }
+union(){
+    m = 8;
+    translate([-60,0,0])
+    for(i=[0:m]) {
+        rotstar(i,m);
     }
-    translate([0,5,41])
-    rotate([90,0,0])
-    #cylinder(10,3,3);
+    
+    for(i=[0:m-1]) {
+        translate([i*60,0,0])
+            difference(){
+                rotstar(i+1,m);
+                rotstar(i,m);
+            }
+    }
 }
