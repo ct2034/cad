@@ -18,20 +18,24 @@ module tip(n) {
 }
 
 module star() {
-n = 5;
-for(i=[0:n-1]) {
-    rotate([0,i*360/n,0])
-        tip(n);
+    n = 5;
+    for(i=[0:n-1]) {
+        rotate([0,i*360/n,0])
+            tip(n);
+    }
 }
+
+module rotstar(i,m) {
+    rotate([0,0,i*180/m])
+        scale([i/m+.25,i/m+.25,i/m+.25])
+            star();
 }
 
 difference() {
     union(){
-        m = 10;
+        m = 8;
         for(i=[0:m]) {
-            rotate([0,0,i*180/m])
-            scale([i/m+.25,i/m+.25,i/m+.25])
-                star();
+            rotstar(i,m);
         }
     }
     translate([0,5,41])
